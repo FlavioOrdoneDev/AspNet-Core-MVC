@@ -21,8 +21,9 @@ namespace Lista_de_Tarefas
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TarefasContexto>(opcoes => opcoes.UseSqlServer(Configuration.GetConnectionString("ConexaoBancoDados")));
-            services.AddScoped<TarefasContexto, TarefasContexto>();
-            services.AddControllersWithViews();            
+            //services.AddScoped<TarefasContexto, TarefasContexto>();
+            services.AddControllersWithViews();
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,7 +50,7 @@ namespace Lista_de_Tarefas
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Tarefa}/{action=Index}/{id?}");
             });
         }
     }
