@@ -2,9 +2,9 @@
 
 @if (Model.Any(x => x.Idade > 60))
 {
-<div class="panel panel-default">
-    <div class="panel-heading">Idosos Cadastrados: @Model.Count(x => x.Idade > 60)</div>
-    <div class="panel-body">
+<div class="card">
+    <div class="card-header">Idosos Cadastrados: @Model.Count(x => x.Idade > 60)</div>
+    <div class="card-body">
         <table class="table">
             <thead>
                 <tr>
