@@ -50,7 +50,7 @@ namespace Lista_de_Tarefas
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Tarefa}/{action=Index}/{id?}");
+                    pattern: "{controller=Pessoas}/{action=Index}/{id?}");
             });
         }
     }
