@@ -1,16 +1,7 @@
 ﻿@model IEnumerable<Lista_de_Tarefas.Models.Pessoa>
 
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <div class="card">
-    <div class="card-header">Pessoas Cadastradas: @Model.Count()</div>
+    <div class="card-header">Adultos Cadastrados: @Model.Count()</div>
     <div class="card-body">
         <table class="table">
             <thead>
@@ -27,6 +18,7 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                    
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.Nome)
@@ -40,21 +32,11 @@
                             <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                         </td>
                     </tr>
+                    
                 }
             </tbody>
         </table>
     </div>
 </div>
 
-@await Component.InvokeAsync("Adolescente")
-@await Component.InvokeAsync("Adulto")
-@await Component.InvokeAsync("Idoso")
 
-
-@*@await Html.PartialAsync("_Adolescentes", Model)
-
-    @{
-        await Html.RenderPartialAsync("_Adultos", Model);
-    }
-
-    <partial name="_Idosos" model="Model" />*@

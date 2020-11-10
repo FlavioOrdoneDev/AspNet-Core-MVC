@@ -180,3 +180,6 @@ C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\obj\Debug\netcoreapp3.1\Razo
 C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\obj\Debug\netcoreapp3.1\Razor\Views\Pessoas\_Adolescentes.cshtml.g.cs
 C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\obj\Debug\netcoreapp3.1\Razor\Views\Pessoas\_Adultos.cshtml.g.cs
 C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\obj\Debug\netcoreapp3.1\Razor\Views\Pessoas\_Idosos.cshtml.g.cs
+C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Adolescente\Default.cshtml.g.cs
+C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Adulto\Default.cshtml.g.cs
+C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Idoso\Default.cshtml.g.cs
