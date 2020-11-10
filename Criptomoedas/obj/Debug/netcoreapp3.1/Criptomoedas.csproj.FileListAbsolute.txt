@@ -170,7 +170,8 @@ C:\Projetos\Cursos\AspNet-Core-MVC\Criptomoedas\bin\Debug\netcoreapp3.1\zh-Hant\
 C:\Projetos\Cursos\AspNet-Core-MVC\Criptomoedas\obj\Debug\netcoreapp3.1\Criptomoedas.csproj.CoreCompileInputs.cache
 C:\Projetos\Cursos\AspNet-Core-MVC\Criptomoedas\obj\Debug\netcoreapp3.1\Criptomoedas.MvcApplicationPartsAssemblyInfo.cache
 C:\Projetos\Cursos\AspNet-Core-MVC\Criptomoedas\obj\Debug\netcoreapp3.1\Razor\Views\Moedas\Create.cshtml.g.cs
-C:\Projetos\Cursos\AspNet-Core-MVC\Criptomoedas\obj\Debug\netcoreapp3.1\Razor\Views\Moedas\Delete.cshtml.g.cs
-C:\Projetos\Cursos\AspNet-Core-MVC\Criptomoedas\obj\Debug\netcoreapp3.1\Razor\Views\Moedas\Details.cshtml.g.cs
-C:\Projetos\Cursos\AspNet-Core-MVC\Criptomoedas\obj\Debug\netcoreapp3.1\Razor\Views\Moedas\Edit.cshtml.g.cs
 C:\Projetos\Cursos\AspNet-Core-MVC\Criptomoedas\obj\Debug\netcoreapp3.1\Razor\Views\Moedas\Index.cshtml.g.cs
+C:\Projetos\Cursos\AspNet-Core-MVC\Criptomoedas\obj\Debug\netcoreapp3.1\Criptomoedas.csprojAssemblyReference.cache
+C:\Projetos\Cursos\AspNet-Core-MVC\Criptomoedas\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Moeda\Default.cshtml.g.cs
+C:\Projetos\Cursos\AspNet-Core-MVC\Criptomoedas\bin\Debug\netcoreapp3.1\libman.json
+C:\Projetos\Cursos\AspNet-Core-MVC\Criptomoedas\obj\Debug\netcoreapp3.1\Razor\Views\Moedas\_Grafico.cshtml.g.cs

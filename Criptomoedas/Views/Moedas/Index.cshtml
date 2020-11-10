@@ -4,38 +4,93 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div>
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Nova Moeda</a>
+    </p>
+    
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantidade)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantidade)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            @await Component.InvokeAsync("Moeda")
+        </div>
+        <div class="col-sm-8">
+            <partial name="_Grafico" />
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+//import * as Chart from "../../wwwroot/lib/Chart.js/Chart"
+
+    function PegarMoedas(dados) {
+        var quantidade = 0;
+        var moedas = [];
+
+        while (quantidade < dados.length) {
+            moedas.push(dados[quantidade].nome);
+            quantidade++;
+        }
+
+        return moedas;
+    }
+
+    function PegarQuantidades(dados) {
+        var quantidade = 0;
+        var valores = [];
+
+        while (quantidade < dados.length) {
+            valores.push(dados[quantidade].quantidade);
+            quantidade++;
+        }
+
+        return valores;
+    }
+
+    function PegarCores(quantidade){
+        var cores = [];
+
+        while (quantidade >= 0) {
+            var r = Math.floor(Math.random() * 255);
+            var g = Math.floor(Math.random() * 255);
+            var b = Math.floor(Math.random() * 255);
+
+            cores.push("rgb(" + r + ", " + g + ", " + b + ")");
+            quantidade--;
+        }
+
+        return cores;
+    }
+
+    
+
+    $.ajax({
+        type: "GET",
+        url: "Moedas/DadosGrafico",
+        success: function (dados) {
+            new Chart(document.getElementById("grafico"), {
+                type: 'pie',
+                data: {
+                    labels: PegarMoedas(dados),
+                    datasets: [{
+                        labels: "Quantidade",
+                        borderWidth: 2,
+                        backgroundColor: PegarCores(dados.length),
+                        data: PegarQuantidades(dados)
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: "Quantidade em cada moeda"
+                    }
+                }
+            })
+        }
+    })
+</script>
+
