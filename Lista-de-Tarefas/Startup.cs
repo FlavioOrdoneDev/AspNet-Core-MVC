@@ -21,7 +21,7 @@ namespace Lista_de_Tarefas
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TarefasContexto>(opcoes => opcoes.UseSqlServer(Configuration.GetConnectionString("ConexaoBancoDados")));
-            //services.AddScoped<TarefasContexto, TarefasContexto>();
+            services.AddScoped<TarefasContexto, TarefasContexto>();
             services.AddControllersWithViews();
             services.AddMvc();
         }

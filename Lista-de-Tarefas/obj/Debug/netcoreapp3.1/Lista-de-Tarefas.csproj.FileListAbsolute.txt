@@ -66,15 +66,6 @@ C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\bin\Debug\netcoreapp3.1\List
 C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\bin\Debug\netcoreapp3.1\Lista-de-Tarefas.pdb
 C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\bin\Debug\netcoreapp3.1\Lista-de-Tarefas.Views.dll
 C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\bin\Debug\netcoreapp3.1\Lista-de-Tarefas.Views.pdb
-C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\bin\Debug\netcoreapp3.1\EntityFramework.SqlServer.dll
-C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\bin\Debug\netcoreapp3.1\EntityFramework.dll
-C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\bin\Debug\netcoreapp3.1\System.CodeDom.dll
-C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
-C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
-C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
-C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
-C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\obj\Debug\netcoreapp3.1\Lista-de-Tarefas.Views.pdb
 C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\obj\Debug\netcoreapp3.1\Lista-de-Tarefas.dll
 C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\obj\Debug\netcoreapp3.1\Lista-de-Tarefas.pdb
@@ -181,3 +172,4 @@ C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\obj\Debug\netcoreapp3.1\Razo
 C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\obj\Debug\netcoreapp3.1\Razor\Views\Tarefas\Details.cshtml.g.cs
 C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\obj\Debug\netcoreapp3.1\Razor\Views\Tarefas\Edit.cshtml.g.cs
 C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\obj\Debug\netcoreapp3.1\Razor\Views\Tarefas\Index.cshtml.g.cs
+C:\Projetos\Cursos\AspNet-Core-MVC\Lista-de-Tarefas\obj\Debug\netcoreapp3.1\Lista-de-Tarefas.csprojAssemblyReference.cache
