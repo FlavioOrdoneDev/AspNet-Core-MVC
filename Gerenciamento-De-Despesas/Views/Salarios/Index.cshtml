@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Gerenciamento_De_Despesas.Models.Entidades.Despesa>
+﻿@model IEnumerable<Gerenciamento_De_Despesas.Models.Entidades.Salario>
 
 @{
     ViewData["Title"] = "Index";
@@ -18,9 +18,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Mes)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TipoDespesa)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -32,9 +29,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Mes.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoDespesa.Nome)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

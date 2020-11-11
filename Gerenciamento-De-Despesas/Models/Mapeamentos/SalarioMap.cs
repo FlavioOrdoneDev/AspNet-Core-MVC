@@ -10,7 +10,6 @@ namespace Gerenciamento_De_Despesas.Models.Mapeamentos
         public void Configure(EntityTypeBuilder<Salario> builder)
         {
             builder.HasKey(s => s.Id);
-            builder.Property(s => s.Id).ValueGeneratedNever();
             builder.Property(s => s.Valor).IsRequired();
 
             builder.HasOne(m => m.Mes).WithOne(m => m.Salario).HasForeignKey<Salario>(m => m.MesId);

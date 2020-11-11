@@ -13,9 +13,9 @@ namespace Gerenciamento_De_Despesas.Models.Mapeamentos
             builder.Property(m => m.Id).ValueGeneratedNever();
             builder.Property(m => m.Nome).HasMaxLength(50).IsRequired();
 
-            builder.HasMany(m => m.Despesas).WithOne(m => m.Mes).HasForeignKey(m => m.Id).OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(m => m.Despesas).WithOne(m => m.Mes).HasForeignKey(m => m.MesId).OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasOne(m => m.Salario).WithOne(m => m.Mes).HasForeignKey<Salario>(m => m.MesId).OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(m => m.Salario).WithOne(m => m.Mes).OnDelete(DeleteBehavior.Cascade);
 
             builder.ToTable("Meses");
         }

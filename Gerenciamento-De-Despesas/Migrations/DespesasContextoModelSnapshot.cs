@@ -21,7 +21,9 @@ namespace Gerenciamento_De_Despesas.Migrations
             modelBuilder.Entity("Gerenciamento_De_Despesas.Models.Entidades.Despesa", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<int>("MesId")
                         .HasColumnType("int");
@@ -33,6 +35,8 @@ namespace Gerenciamento_De_Despesas.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("MesId");
 
                     b.HasIndex("TipoDespesaId");
 
@@ -57,7 +61,9 @@ namespace Gerenciamento_De_Despesas.Migrations
             modelBuilder.Entity("Gerenciamento_De_Despesas.Models.Entidades.Salario", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<int>("MesId")
                         .HasColumnType("int");
@@ -94,7 +100,7 @@ namespace Gerenciamento_De_Despesas.Migrations
                 {
                     b.HasOne("Gerenciamento_De_Despesas.Models.Entidades.Mes", "Mes")
                         .WithMany("Despesas")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("MesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

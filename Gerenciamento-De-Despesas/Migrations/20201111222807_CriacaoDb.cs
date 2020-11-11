@@ -2,7 +2,7 @@
 
 namespace Gerenciamento_De_Despesas.Migrations
 {
-    public partial class criacaoDB : Migration
+    public partial class CriacaoDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,7 +35,8 @@ namespace Gerenciamento_De_Despesas.Migrations
                 name: "Salarios",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Valor = table.Column<double>(type: "float", nullable: false),
                     MesId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -54,7 +55,8 @@ namespace Gerenciamento_De_Despesas.Migrations
                 name: "Despesas",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Valor = table.Column<double>(type: "float", nullable: false),
                     MesId = table.Column<int>(type: "int", nullable: false),
                     TipoDespesaId = table.Column<int>(type: "int", nullable: false)
@@ -63,8 +65,8 @@ namespace Gerenciamento_De_Despesas.Migrations
                 {
                     table.PrimaryKey("PK_Despesas", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Despesas_Meses_Id",
-                        column: x => x.Id,
+                        name: "FK_Despesas_Meses_MesId",
+                        column: x => x.MesId,
                         principalTable: "Meses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -75,6 +77,11 @@ namespace Gerenciamento_De_Despesas.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Despesas_MesId",
+                table: "Despesas",
+                column: "MesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Despesas_TipoDespesaId",
