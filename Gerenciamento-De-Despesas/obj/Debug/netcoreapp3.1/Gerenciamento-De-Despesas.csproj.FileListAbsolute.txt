@@ -81,7 +81,6 @@ C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\obj\Debug\netcoreap
 C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\obj\Debug\netcoreapp3.1\Gerenciamento-De-Despesas.genruntimeconfig.cache
 C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\bin\Debug\netcoreapp3.1\Humanizer.dll
 C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
-C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\obj\Debug\netcoreapp3.1\Gerenciamento-De-Despesas.csprojAssemblyReference.cache
 C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\bin\Debug\netcoreapp3.1\Microsoft.Data.Sqlite.dll
 C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Sqlite.dll
 C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\bin\Debug\netcoreapp3.1\SQLitePCLRaw.batteries_v2.dll

@@ -19,21 +19,32 @@ namespace Gerenciamento_De_Despesas.Controllers
             _context = context;
         }
 
-        // GET: TipoDespesas
         public async Task<IActionResult> Index()
         {
             return View(await _context.TipoDespesas.ToListAsync());
         }
 
-        // GET: TipoDespesas/Create
-        public IActionResult Create()
+        [HttpPost]
+        public async Task<IActionResult> Index(string procurar)
+        {
+            if (!String.IsNullOrEmpty(procurar))
+                return View(await _context.TipoDespesas.Where(x => x.Nome.ToUpper().Contains(procurar.ToUpper())).ToListAsync());
+
+            return View(await _context.TipoDespesas.ToListAsync());
+        }
+
+        public async Task<JsonResult> TipoDespesaExiste(string Nome)
+        {
+            if (await _context.TipoDespesas.AnyAsync(x => x.Nome.ToUpper() == Nome.ToUpper()))
+                return Json("Esse tipo de despesa já existe!");
+            return Json(true);
+        }
+
+         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: TipoDespesas/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome")] TipoDespesa tipoDespesa)
@@ -49,8 +60,7 @@ namespace Gerenciamento_De_Despesas.Controllers
             return View(tipoDespesa);
         }
 
-        // GET: TipoDespesas/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -65,9 +75,6 @@ namespace Gerenciamento_De_Despesas.Controllers
             return View(tipoDespesa);
         }
 
-        // POST: TipoDespesas/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome")] TipoDespesa tipoDespesa)
@@ -101,7 +108,6 @@ namespace Gerenciamento_De_Despesas.Controllers
             return View(tipoDespesa);
         }
 
-        // POST: TipoDespesas/Delete/5
         [HttpPost]
         public async Task<JsonResult> Delete(int id)
         {
