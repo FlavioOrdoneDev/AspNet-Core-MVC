@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Gerenciamento_De_Despesas.Models.Contexto;
 using Gerenciamento_De_Despesas.Models.Entidades;
+using Gerenciamento_De_Despesas.ViewModels;
 
 namespace Gerenciamento_De_Despesas.Controllers
 {
@@ -21,18 +22,11 @@ namespace Gerenciamento_De_Despesas.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewData["Meses"] = new SelectList(_context.Meses.Where(x => x.Id == x.Salario.MesId), "Id", "Nome");
+
             var despesasContexto = _context.Despesas.Include(d => d.Mes).Include(d => d.TipoDespesa);
             return View(await despesasContexto.ToListAsync());
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Index(string procurar)
-        {
-            if (!String.IsNullOrEmpty(procurar))
-                return View(await _context.Despesas.Where(x => x.TipoDespesa.Nome.ToUpper().Contains(procurar.ToUpper())).ToListAsync());
-
-            return View(await _context.Despesas.ToListAsync());
-        }
+        }        
 
         public IActionResult Create()
         {
@@ -126,6 +120,16 @@ namespace Gerenciamento_De_Despesas.Controllers
         private bool DespesaExists(int id)
         {
             return _context.Despesas.Any(e => e.Id == id);
+        }
+
+        public JsonResult GastosTotalMes(int mesId)
+        {
+            GastosTotaisMesViewModel gastos = new GastosTotaisMesViewModel();
+
+            gastos.ValorTotalGasto = _context.Despesas.Where(d => d.Mes.Id == mesId).Sum(d => d.Valor);
+            gastos.Salario = _context.Salarios.Where(s => s.Mes.Id == mesId).Select(s => s.Valor).FirstOrDefault();
+
+            return Json(gastos);
         }
     }
 }
