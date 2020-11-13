@@ -176,8 +176,6 @@ C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\obj\Debug\netcoreap
 C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\obj\Debug\netcoreapp3.1\Gerenciamento-De-Despesas.MvcApplicationPartsAssemblyInfo.cs
 C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\obj\Debug\netcoreapp3.1\Gerenciamento-De-Despesas.MvcApplicationPartsAssemblyInfo.cache
 C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\obj\Debug\netcoreapp3.1\Razor\Views\Despesas\Create.cshtml.g.cs
-C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\obj\Debug\netcoreapp3.1\Razor\Views\Despesas\Delete.cshtml.g.cs
-C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\obj\Debug\netcoreapp3.1\Razor\Views\Despesas\Details.cshtml.g.cs
 C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\obj\Debug\netcoreapp3.1\Razor\Views\Despesas\Edit.cshtml.g.cs
 C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\obj\Debug\netcoreapp3.1\Razor\Views\Despesas\Index.cshtml.g.cs
 C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\obj\Debug\netcoreapp3.1\Razor\Views\TipoDespesas\Create.cshtml.g.cs

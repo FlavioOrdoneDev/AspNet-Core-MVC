@@ -101,12 +101,13 @@ namespace Gerenciamento_De_Despesas.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<JsonResult> Delete(int id)
         {
             var salario = await _context.Salarios.FindAsync(id);
+            TempData["Confirmacao"] = "Salário foi excluído com sucesso.";
             _context.Salarios.Remove(salario);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return Json("Salário excluído com sucesso.");
         }
 
         private bool SalarioExists(int id)

@@ -52,7 +52,6 @@ namespace Gerenciamento_De_Despesas.Controllers
             if (ModelState.IsValid)
             {
                 TempData["Confirmacao"] = tipoDespesa.Nome + " foi cadastrado com sucesso.";
-
                 _context.Add(tipoDespesa);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

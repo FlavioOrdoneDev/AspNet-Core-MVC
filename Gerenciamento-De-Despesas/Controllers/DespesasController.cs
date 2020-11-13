@@ -19,34 +19,21 @@ namespace Gerenciamento_De_Despesas.Controllers
             _context = context;
         }
 
-        // GET: Despesas
         public async Task<IActionResult> Index()
         {
             var despesasContexto = _context.Despesas.Include(d => d.Mes).Include(d => d.TipoDespesa);
             return View(await despesasContexto.ToListAsync());
         }
 
-        // GET: Despesas/Details/5
-        public async Task<IActionResult> Details(int? id)
+        [HttpPost]
+        public async Task<IActionResult> Index(string procurar)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (!String.IsNullOrEmpty(procurar))
+                return View(await _context.Despesas.Where(x => x.TipoDespesa.Nome.ToUpper().Contains(procurar.ToUpper())).ToListAsync());
 
-            var despesa = await _context.Despesas
-                .Include(d => d.Mes)
-                .Include(d => d.TipoDespesa)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (despesa == null)
-            {
-                return NotFound();
-            }
-
-            return View(despesa);
+            return View(await _context.Despesas.ToListAsync());
         }
 
-        // GET: Despesas/Create
         public IActionResult Create()
         {
             ViewData["MesId"] = new SelectList(_context.Meses, "Id", "Nome");
@@ -54,15 +41,13 @@ namespace Gerenciamento_De_Despesas.Controllers
             return View();
         }
 
-        // POST: Despesas/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Valor,MesId,TipoDespesaId")] Despesa despesa)
         {
             if (ModelState.IsValid)
             {
+                TempData["Confirmacao"] = "Despesa foi adicionada com sucesso.";
                 _context.Add(despesa);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -72,7 +57,6 @@ namespace Gerenciamento_De_Despesas.Controllers
             return View(despesa);
         }
 
-        // GET: Despesas/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,22 +64,23 @@ namespace Gerenciamento_De_Despesas.Controllers
                 return NotFound();
             }
 
-            var despesa = await _context.Despesas.FindAsync(id);
+            var teste = _context.Despesas.Include(x => x.TipoDespesa).Include(x => x.Mes).ToList();
+
+            var despesa = teste.Where(x => x.Id == id).FirstOrDefault();
             if (despesa == null)
             {
                 return NotFound();
             }
-            ViewData["Id"] = new SelectList(_context.Meses, "Id", "Nome", despesa.Id);
+
+            
+            ViewData["Id"] = new SelectList(_context.Meses, "Id", "Nome", despesa.MesId);
             ViewData["TipoDespesaId"] = new SelectList(_context.TipoDespesas, "Id", "Nome", despesa.TipoDespesaId);
             return View(despesa);
         }
 
-        // POST: Despesas/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Valor,MesId,TipoDespesaId")] Despesa despesa)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Valor,MesId, TipoDespesaId")] Despesa despesa)
         {
             if (id != despesa.Id)
             {
@@ -106,6 +91,7 @@ namespace Gerenciamento_De_Despesas.Controllers
             {
                 try
                 {
+                    TempData["Confirmacao"] = "Despesa atualizada com sucesso.";
                     _context.Update(despesa);
                     await _context.SaveChangesAsync();
                 }
@@ -127,35 +113,14 @@ namespace Gerenciamento_De_Despesas.Controllers
             return View(despesa);
         }
 
-        // GET: Despesas/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        [HttpPost]
+        public async Task<JsonResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var despesa = await _context.Despesas
-                .Include(d => d.Mes)
-                .Include(d => d.TipoDespesa)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (despesa == null)
-            {
-                return NotFound();
-            }
-
-            return View(despesa);
-        }
-
-        // POST: Despesas/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var despesa = await _context.Despesas.FindAsync(id);
+            var despesa = await _context.Despesas.Include(t => t.TipoDespesa).Where(x => x.Id == id).FirstOrDefaultAsync();
+            TempData["Confirmacao"] = "Despesa foi excluída com sucesso.";
             _context.Despesas.Remove(despesa);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return Json( "Despesa excluída com sucesso.");
         }
 
         private bool DespesaExists(int id)
