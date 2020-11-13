@@ -4,37 +4,30 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Salario</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <label asp-for="Valor" class="control-label"></label>
-                <input asp-for="Valor" class="form-control" />
-                <span asp-validation-for="Valor" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MesId" class="control-label"></label>
-                <select asp-for="MesId" class ="form-control" asp-items="ViewBag.MesId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="formulario">
+    <h5>Salários</h5>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create" class="form border rounded">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Valor" class="col-form-label"></label>
+                    <input asp-for="Valor" class="form-control form-control-sm" />
+                    <span asp-validation-for="Valor" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MesId" class="col-form-label"></label>
+                    <select asp-for="MesId" class="form-control form-control-sm" asp-items="ViewBag.MesId"></select>
+                </div>
+                <hr />
+                <div class="form-group">
+                    <input type="submit" value="Salvar" class="btn btn-outline-success btn-sm" />
+                    <a asp-action="Index" class="btn btn-outline-dark btn-sm">Voltar</a>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

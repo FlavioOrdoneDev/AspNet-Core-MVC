@@ -185,7 +185,5 @@ C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\obj\Debug\netcoreap
 C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\obj\Debug\netcoreapp3.1\Razor\Views\TipoDespesas\Index.cshtml.g.cs
 C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\obj\Debug\netcoreapp3.1\Gerenciamento-De-Despesas.csprojAssemblyReference.cache
 C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\obj\Debug\netcoreapp3.1\Razor\Views\Salarios\Create.cshtml.g.cs
-C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\obj\Debug\netcoreapp3.1\Razor\Views\Salarios\Delete.cshtml.g.cs
-C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\obj\Debug\netcoreapp3.1\Razor\Views\Salarios\Details.cshtml.g.cs
 C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\obj\Debug\netcoreapp3.1\Razor\Views\Salarios\Edit.cshtml.g.cs
 C:\Projetos\Cursos\AspNet-Core-MVC\Gerenciamento-De-Despesas\obj\Debug\netcoreapp3.1\Razor\Views\Salarios\Index.cshtml.g.cs

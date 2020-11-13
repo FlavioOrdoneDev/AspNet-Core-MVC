@@ -19,30 +19,10 @@ namespace Gerenciamento_De_Despesas.Controllers
             _context = context;
         }
 
-        // GET: Salarios
         public async Task<IActionResult> Index()
         {
             var despesasContexto = _context.Salarios.Include(s => s.Mes);
             return View(await despesasContexto.ToListAsync());
-        }
-
-        // GET: Salarios/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var salario = await _context.Salarios
-                .Include(s => s.Mes)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (salario == null)
-            {
-                return NotFound();
-            }
-
-            return View(salario);
         }
 
         public IActionResult Create()
@@ -69,7 +49,6 @@ namespace Gerenciamento_De_Despesas.Controllers
             return View(salario);
         }
 
-        // GET: Salarios/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -82,13 +61,12 @@ namespace Gerenciamento_De_Despesas.Controllers
             {
                 return NotFound();
             }
-            ViewData["MesId"] = new SelectList(_context.Meses, "Id", "Nome", salario.MesId);
+
+            salario.Mes = _context.Meses.Where(x => x.Id == salario.MesId).First();
+            ViewData["MesId"] = new SelectList(_context.Meses.Where(s => s.Id != s.Salario.MesId), "Id", "Nome", salario.MesId);
             return View(salario);
         }
 
-        // POST: Salarios/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Valor,MesId")] Salario salario)
@@ -118,32 +96,11 @@ namespace Gerenciamento_De_Despesas.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MesId"] = new SelectList(_context.Meses, "Id", "Nome", salario.MesId);
+            ViewData["MesId"] = new SelectList(_context.Meses.Where(s => s.Id != s.Salario.MesId), "Id", "Nome", salario.MesId);
             return View(salario);
         }
 
-        // GET: Salarios/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var salario = await _context.Salarios
-                .Include(s => s.Mes)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (salario == null)
-            {
-                return NotFound();
-            }
-
-            return View(salario);
-        }
-
-        // POST: Salarios/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [HttpPost]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var salario = await _context.Salarios.FindAsync(id);
