@@ -173,3 +173,4 @@ C:\Projetos\Cursos\AspNet-Core-MVC\Album-de-Fotos\obj\Debug\netcoreapp3.1\Razor\
 C:\Projetos\Cursos\AspNet-Core-MVC\Album-de-Fotos\obj\Debug\netcoreapp3.1\Razor\Views\Album\Index.cshtml.g.cs
 C:\Projetos\Cursos\AspNet-Core-MVC\Album-de-Fotos\obj\Debug\netcoreapp3.1\Album-de-Fotos.csprojAssemblyReference.cache
 C:\Projetos\Cursos\AspNet-Core-MVC\Album-de-Fotos\obj\Debug\netcoreapp3.1\Razor\Views\Imagem\Create.cshtml.g.cs
+C:\Projetos\Cursos\AspNet-Core-MVC\Album-de-Fotos\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Imagem\Default.cshtml.g.cs

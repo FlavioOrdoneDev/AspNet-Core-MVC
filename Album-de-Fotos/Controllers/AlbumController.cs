@@ -23,13 +23,11 @@ namespace Album_de_Fotos.Controllers
             _webHostingEnvironment = webHostingEnvironment;
         }
 
-        // GET: Album
         public async Task<IActionResult> Index()
         {
             return View(await _context.Albuns.ToListAsync());
         }
 
-        // GET: Album/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -138,18 +136,33 @@ namespace Album_de_Fotos.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(album);
-        }
+        }               
 
-        
-
-        // POST: Album/Delete/5
         [HttpPost]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<JsonResult> Delete(int id)
         {
             var album = await _context.Albuns.FindAsync(id);
+
+            IEnumerable<string> links = _context.Imagens.Where(i => i.AlbumId == id).Select(i => i.Link);
+
+            foreach (var link in links)
+            {
+                var linkImagem = link.Replace("~", "wwwroot");
+                System.IO.File.Delete(linkImagem);
+            }
+
+            _context.Imagens.RemoveRange(_context.Imagens.Where(x => x.AlbumId == id));
+
+            string linkFotoAlbum = album.FotoTopo;
+            if (linkFotoAlbum != null)
+            {
+                linkFotoAlbum = linkFotoAlbum.Replace("~", "wwwroot");
+                System.IO.File.Delete(linkFotoAlbum);
+            }
+
             _context.Albuns.Remove(album);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return Json("Album excluído com sucesso");
         }
 
         private bool AlbumExists(int id)
