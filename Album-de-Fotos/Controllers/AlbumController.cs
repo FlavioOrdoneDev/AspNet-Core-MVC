@@ -6,16 +6,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Album_de_Fotos.Models;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Album_de_Fotos.Controllers
 {
     public class AlbumController : Controller
     {
         private readonly Contexto _context;
+        private readonly IWebHostEnvironment _webHostingEnvironment;
 
-        public AlbumController(Contexto context)
+        public AlbumController(Contexto context, IWebHostEnvironment webHostingEnvironment)
         {
             _context = context;
+            _webHostingEnvironment = webHostingEnvironment;
         }
 
         // GET: Album
@@ -53,10 +58,21 @@ namespace Album_de_Fotos.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Destino,FotoTopo,Inicio,Fim")] Album album)
+        public async Task<IActionResult> Create([Bind("Id,Destino,FotoTopo,Inicio,Fim")] Album album, IFormFile arquivo)
         {
             if (ModelState.IsValid)
             {
+                var linkUpload = Path.Combine(_webHostingEnvironment.WebRootPath, "Imagens");
+
+                if (arquivo != null)
+                {
+                    using (var filestream = new FileStream(Path.Combine(linkUpload, arquivo.FileName), FileMode.Create))
+                    {
+                        await arquivo.CopyToAsync(filestream);
+                        album.FotoTopo = "~/Imagens/" + arquivo.FileName;
+                    }
+                }
+
                 _context.Add(album);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -64,7 +80,6 @@ namespace Album_de_Fotos.Controllers
             return View(album);
         }
 
-        // GET: Album/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -77,25 +92,39 @@ namespace Album_de_Fotos.Controllers
             {
                 return NotFound();
             }
+
+            TempData["FotoTopo"] = album.FotoTopo;
+
             return View(album);
         }
 
-        // POST: Album/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Destino,FotoTopo,Inicio,Fim")] Album album)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Destino,FotoTopo,Inicio,Fim")] Album album, IFormFile arquivo)
         {
             if (id != album.Id)
             {
                 return NotFound();
             }
 
+            if (String.IsNullOrEmpty(album.FotoTopo))
+                album.FotoTopo = TempData["FotoTopo"].ToString();
+
             if (ModelState.IsValid)
             {
                 try
                 {
+                    var linkUpload = Path.Combine(_webHostingEnvironment.WebRootPath, "Imagens");
+
+                    if (arquivo != null)
+                    {
+                        using (var filestream = new FileStream(Path.Combine(linkUpload, arquivo.FileName), FileMode.Create))
+                        {
+                            await arquivo.CopyToAsync(filestream);
+                            album.FotoTopo = "~/Imagens/" + arquivo.FileName;
+                        }
+                    }
+
                     _context.Update(album);
                     await _context.SaveChangesAsync();
                 }
